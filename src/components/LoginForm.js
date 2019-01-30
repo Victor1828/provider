@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 import { emailChanged, passwordChanged, loginUser } from '../actions'
 import { Card, CardSection, Input, Button, Spinner } from './common';
@@ -32,6 +32,16 @@ class LoginForm extends Component {
     )
   }
 
+  renderError() {
+    if (this.props.error) {
+      return (
+        <Text style={styles.errorTextStyle}>
+          {this.props.error}
+        </Text>
+      )
+    }
+  }
+
   render() {
     return (
       <View style={styles.viewStyle}>
@@ -55,9 +65,7 @@ class LoginForm extends Component {
             />
           </CardSection>
 
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
+          {this.renderError()}
 
           <CardSection>
             {this.renderButton()}
