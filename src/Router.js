@@ -7,7 +7,7 @@ import MainList from './components/MainList'
 import { getItem } from './actions/index'
 
 class RouterComponent extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getItem()
   }
 
@@ -27,8 +27,4 @@ class RouterComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {state}
-}
-
-export default connect(mapStateToProps, { getItem })(RouterComponent)
+export default connect(null, { getItem })(RouterComponent)

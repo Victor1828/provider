@@ -16,7 +16,7 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   PASSWORD_CHANGED
-} from './types';
+} from './types'
 
 export const emailChanged = (email) => {
   return {
@@ -40,7 +40,7 @@ export const loginUser = ({ email, password }) => {
         axios.post('http://192.168.15.12:3000/api/v2/authentications', {email, password, device_token})
           .then(user => {
             loginUserSuccess(dispatch, user, device_token)
-            saveItem('id_token', device_token)
+            AsyncStorage.multiSet([['id_token', device_token], ['user', JSON.stringify(user)]])
           })
           .catch(() => loginUserFail(dispatch))
       })
@@ -48,37 +48,29 @@ export const loginUser = ({ email, password }) => {
   }
 }
 
+export const getItem = () => {
+  return (dispatch) => {
+    AsyncStorage.multiGet(['id_token', 'user'], (err, data) => {
+      if (err) {
+        Actions.auth()
+        return
+      } else if (data[0][1] == null) {
+        Actions.auth()
+        return
+      }
+      loginUserSuccess(dispatch, JSON.parse(data[1][1]).data, data[0][1])
+    })
+  }
+}
+
 const loginUserFail = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAIL });
-};
+  dispatch({ type: LOGIN_USER_FAIL })
+}
 
 const loginUserSuccess = (dispatch, user, device_token) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: {user, device_token}
-  });
-  console.log(user)
-  Actions.main();
-};
-
-const saveItem = async(item, selectedValue) => {
-  try {
-    await AsyncStorage.setItem(item, selectedValue);
-  } catch (error) {
-    console.log('AsyncStorage error: ' + error.message);
-  }
-}
-
-export const getItem = () => {
-  return (dispatch) => {
-    AsyncStorage.getItem('id_token')
-    .then(token => {
-      if (token == null) {
-        Actions.auth()
-      } else {
-        Actions.main()
-      }
-    })
-    .catch(err => console.log(err))
-  }
+  })
+  Actions.main()
 }

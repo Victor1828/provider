@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 
+import { getItem } from '../actions/index'
+
 class MainList extends Component {
   componentDidMount() {
     console.log(this.props.state)
@@ -22,4 +24,4 @@ const mapStateToProps = state => {
   return {state}
 }
 
-export default connect(mapStateToProps)(MainList)
+export default connect(mapStateToProps, { getItem })(MainList)
