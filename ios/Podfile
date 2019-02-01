@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'sfleet_provider' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for sfleet_provider
+  pod 'Firebase/Core', '~> 5.3.0'
+  pod 'Firebase/Messaging', '~> 5.3.0'
+
+  target 'sfleet_providerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'sfleet_provider-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  target 'sfleet_provider-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

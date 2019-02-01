@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "684236695390",
+    "firebase_url": "https://small-talk-5d6e9.firebaseio.com",
+    "project_id": "small-talk-5d6e9",
+    "storage_bucket": "small-talk-5d6e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684236695390:android:9f5a0e41b1f1fa37",
+        "android_client_info": {
+          "package_name": "com.sfleet_provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684236695390-u6f2npqrnigc301h68oba5msc8ddquf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfPtDnmS-nb1-x1WKshh6Sh7hc7UYPPYw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
